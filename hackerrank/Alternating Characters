@@ -1,0 +1,13 @@
+int alternatingCharacters(string s) {
+    char last = s[0];
+    int deletions = 0;
+    for (int i = 1; i < s.length(); i++){
+        if (last == s[i]){
+            deletions += 1;
+        }
+        else {
+            last = s[i];
+        }
+    }
+    return deletions;
+}

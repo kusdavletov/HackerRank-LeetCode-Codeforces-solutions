@@ -1,0 +1,17 @@
+long repeatedString(string s, long n) {
+    long len = s.length();
+    long lastPart = n % len;
+    long times = (n - lastPart) / len;
+    long numA = 0, numALastPart = 0;
+    for (long i = 0; i < len; i++){
+        if (s[i] == 'a'){
+            numA += 1;
+        }
+    }
+    for (long i = 0; i < lastPart; i++){
+        if (s[i] == 'a'){
+            numALastPart += 1;
+        }
+    }
+    return times * numA + numALastPart;
+}

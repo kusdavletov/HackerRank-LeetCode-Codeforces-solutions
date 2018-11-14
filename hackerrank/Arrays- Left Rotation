@@ -1,0 +1,17 @@
+void printVector(const vector<int> &a){
+    for (const auto &elem : a){
+        cout << elem << " ";
+    }
+    cout << endl;
+}
+
+vector<int> rotLeft(vector<int> a, int d) {
+    int index = d % a.size();
+    for (int i = 0; i < index; i++){
+        a.push_back(a[i]);
+    }
+    printVector(a);
+    a.erase(a.begin(), a.begin() + index);
+    printVector(a);
+    return a;
+}
