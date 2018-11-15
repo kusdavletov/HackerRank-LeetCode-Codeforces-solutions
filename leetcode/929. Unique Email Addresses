@@ -1,0 +1,57 @@
+class Solution {
+public:
+    vector<string> separate(const string &str){
+        string local = "", domain = "";
+        int i = 0, len = str.length();
+        while (str[i] != '@'){
+            local += str[i];
+            i++;
+        }
+        i++;
+        while (i != len){
+            domain += str[i];
+            i++;
+        }
+        vector<string> result = {local, domain};
+        return result;
+    }
+    
+    void adjust(string &str){
+        string result = "";
+        int i = 0, len = str.length();
+        while (i != len){
+            if (str[i] == '+'){
+                break;
+            }
+            if (str[i] == '.'){
+                i++;
+                continue;
+            }
+            result += str[i];
+            i++;
+        }
+        str = result;
+    }
+    
+    void printVector(const vector<string> &arr){
+        for (const auto &s : arr)
+            cout << s << " ";
+        cout << endl;
+    }
+    
+    int numUniqueEmails(vector<string>& emails) {
+        vector<vector<string>> parsed;
+        unordered_map<string, int> map;
+        for (const auto &email : emails){
+            parsed.push_back(separate(email));
+        }
+        
+        for (auto &local : parsed){
+            adjust(local[0]);
+        }
+        for (auto &local : parsed){
+            map[local[0] + local[1]] = 1;
+        }
+        return map.size();
+    }
+};

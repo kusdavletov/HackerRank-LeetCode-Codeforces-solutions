@@ -1,0 +1,17 @@
+class Solution {
+public:
+    string convert(const string &str){
+        vector<string> alphabet = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        string result = "";
+        for (const auto &c : str)
+            result += alphabet[c - 'a'];
+        return result;
+    }
+    int uniqueMorseRepresentations(vector<string>& words) {
+        unordered_map<string, int> map;
+        for (const auto &word : words){
+            map[convert(word)] = 1;
+        }
+        return map.size();
+    }
+};
