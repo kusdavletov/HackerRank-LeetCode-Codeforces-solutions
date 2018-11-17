@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string dec2bin(int num){
+        string result = "";
+        for (int i = 31; i >= 0; i--) { 
+            int k = num >> i; 
+            if (k & 1) 
+                result += '1';
+            else
+                result += '0';
+        } 
+        return result;
+    }
+    
+    int hammingDistance(int x, int y) {
+        string xbin = dec2bin(x);
+        string ybin = dec2bin(y);
+        int count = 0;
+        for (int i = 0; i < 32; i++){
+            if (xbin[i] != ybin[i])
+                count += 1;
+        }
+        return count;
+    }
+};
